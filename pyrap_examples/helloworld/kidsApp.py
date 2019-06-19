@@ -188,7 +188,7 @@ class MultiPage:
 
             w = session.runtime.display.width.value
             h = session.runtime.display.height.value
-            wnd_dialog2.bounds = w / 2 - 100, h / 2 - 150, 300, 300
+            wnd_dialog2.bounds = w / 2 - 200, h / 2 - 350, 200, 200
 
             cmp_dialog1 = Composite(wnd_dialog1.content)
             cmp_dialog1.layout = RowLayout(valign='fill', halign='fill', flexrows=0)
