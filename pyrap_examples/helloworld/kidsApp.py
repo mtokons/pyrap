@@ -50,14 +50,27 @@ class MultiPage:
         #self.comp_home.bg = Color('blue')
         self.comp_home.bgimg = Image(os.path.join('..', 'controls', 'images', 'al2.jpg'))
         self.comp_home.visible = True
-        lbl_wnd = Label(self.comp_home, text='Page 1 Google Search, also referred to as <br /> Google Web Search or simply Google, <br />'
-                                   'is a web search engine developed by Google LLC. <br /> '
+        lbl_wnd = Label(self.comp_home, text='Page 1 Google Search, also referred to as \n Google Web Search or simply Google,\n'
+                                   'is a web search engine developed by Google LLC. \n \n '
                                              'It is the most used search engine on the World Wide Web across all platforms, <br />'
-                                             'with 92.74% market share as of October 2018,<br /> handling more than 3.5 billion searches each day.'
-                                             , markup=True, valign='fill')
+                                             '\n \n with 92.74% market share as of October 2018,\n handling more than 3.5 billion searches each day.'
+                                             , markup=False, multiline=True)
+        lbl_wnd.font = lbl_wnd.font.modify(size=16)
+        lbl_wnd.color = Color("#00ff00")
+
         #lbl_wnd = Label(cmp_dialog, text='Blafasel <b> This is really important</b>', markup=True, valign='fill', halign='fill')
         #lbl_wnd.bg = Color('red')
         btn_showdialog = Button(self.comp_home, text='Show Dialog', halign='fill', valign='fill')
+
+        comp_home_s1 = Composite(self.comp_home)
+        comp_home_s1.layout = RowLayout(flexrows=0, halign='fill', valign='fill')
+
+        comp_home_s1.bg = Color('blue')
+        comp_home_s1.bgimg = Image(os.path.join('..', 'controls', 'images', 'al5.jpg'))
+        comp_home_s1.visible = True
+        btn_showdialog11 = Button(comp_home_s1, text='Show Dialog', halign='fill', valign='fill')
+
+
 
         # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -77,6 +90,12 @@ class MultiPage:
         self.comp_third.bg = Color('yellow')
         self.comp_third.visible = False
         Label(self.comp_third, text='<b>Page 3</b>', markup=True)
+        #lblbuttn = Label(self.comp_third, img=Image(os.path.join('..', 'controls', 'images', 'al5.jpg')), markup=True)
+        #lblbuttn.bg = 'transp'
+        #lblbuttn1 = Label(self.comp_third, img=Image(os.path.join('..', 'controls', 'images', 'al1.jpg')), markup=True)
+        #lblbuttn1.bg = 'transp'
+
+
 
 
 
@@ -128,7 +147,7 @@ class MultiPage:
             # to true in the listener function that is called when the button is clicked (will only work if the window
             # was hidden before. Closing the window will destroy the widget and an error will be thrown when trying
             # to make it visible again.
-            wnd_dialog = Shell(parent=self._shell, titlebar=True, border=True, resize=False, modal=True,
+            wnd_dialog = Shell(parent=self._shell, titlebar=True, border=True, resize=False, modal=False,
                                halign='center', valign='center')
             wnd_dialog.create_content()
             wnd_dialog.content.bg = Color('white')
@@ -153,7 +172,7 @@ class MultiPage:
 
         def showdialog1(*_):
 
-            wnd_dialog1 = Shell(parent=self._shell, titlebar=True, border=True, resize=False, modal=True,
+            wnd_dialog1 = Shell(parent=self._shell, titlebar=True, border=True, resize=False,
                                halign='center', valign='center')
             wnd_dialog1.create_content()
             wnd_dialog1.content.bg = Color('white')
@@ -162,7 +181,7 @@ class MultiPage:
             h = session.runtime.display.height.value
             wnd_dialog1.bounds = w / 2 - 100, h / 2 - 150, 300, 300
 
-            wnd_dialog2 = Shell(parent=self._shell, titlebar=True, border=True, resize=False, modal=True,
+            wnd_dialog2 = Shell(parent=self._shell, titlebar=True, border=True, resize=False,
                                 halign='top', valign='top')
             wnd_dialog2.create_content()
             wnd_dialog2.content.bg = Color('white')

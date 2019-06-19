@@ -61,9 +61,9 @@ class MultiPage:
         self.comp_home = Composite(self.comp_body)
         self.comp_home.layout = ColumnLayout(flexcols={0: 2, 1: 2}, halign='fill', valign='fill')
         self.comp_home.bg = Color('yellow')
-        self.comp_home.bgimg = Image(os.path.join('..', 'controls', 'images', 'al5.png'))
-        # self.comp_home.bgimg = Image(os.path.join('..', 'controls', 'images', 'al2.png'))
-        Label(self.comp_home, img=Image(os.path.join('..', 'controls', 'images', 'al5.png')))
+        self.comp_home.bgimg = Image(os.path.join('..', 'controls', 'images', 'al5.jpg'))
+        # self.comp_home.bgimg = Image(os.path.join('..', 'controls', 'images', 'al2.jpg'))
+        Label(self.comp_home, img=Image(os.path.join('..', 'controls', 'images', 'al5.jpg')))
         self.comp_home.visible = True
         lbl=Label(self.comp_home, text='Welcome to Kids Space Station.I \n' 
                                    'have exciting info and service for you', markup=False, multiline=True)
@@ -92,7 +92,7 @@ class MultiPage:
         self.comp_second = Composite(self.comp_body)
         self.comp_second.layout = ColumnLayout(flexcols=0, halign='fill', valign='fill')
         self.comp_second.bg = Color('black')
-        self.comp_second.bgimg = Image(os.path.join('..', 'controls', 'images', 'al2.png')).resize(height= Pixels(550))
+        self.comp_second.bgimg = Image(os.path.join('..', 'controls', 'images', 'al2.jpg')).resize(height= Pixels(550))
         self.comp_second.visible = False
         Label(self.comp_second, text='<b><font size="5" color="#00ff00">I have exciting info and service for you </font></b>', markup=True)
 
@@ -119,16 +119,16 @@ class MultiPage:
         self.comp_third = Composite(self.comp_body)
         self.comp_third.layout = RowLayout(flexrows=0, halign='fill', valign='fill')
         self.comp_third.bg = Color('yellow')
-        self.comp_third.bgimg = Image(os.path.join('..', 'controls', 'images', 'al4.jpeg'))
+        self.comp_third.bgimg = Image(os.path.join('..', 'controls', 'images', 'al4.jpg'))
         self.comp_third.visible = False
-        lblbuttn=Label(self.comp_third, img=Image(os.path.join('..', 'controls', 'images', 'al5.png')), markup=True)
+        lblbuttn=Label(self.comp_third, img=Image(os.path.join('..', 'controls', 'images', 'al5.jpg')), markup=True)
         lblbuttn.bg = 'transp'
 
         # THIRD PAGE #
         self.comp_four = Composite(self.comp_body)
         self.comp_four.layout = RowLayout(flexrows=0, halign='fill', valign='fill')
         self.comp_four.bg = Color('red')
-        self.comp_four.bgimg = Image(os.path.join('..', 'controls', 'images', 'al5.png'))
+        self.comp_four.bgimg = Image(os.path.join('..', 'controls', 'images', 'al5.jpg'))
         self.comp_four.visible = False
         Label(self.comp_four, text='<b>Page 4</b>', markup=True)
         btn_showdialog = Button(self.comp_four, text='Show Dialog', halign='fill', valign='fill')
