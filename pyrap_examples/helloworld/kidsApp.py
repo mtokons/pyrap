@@ -51,7 +51,7 @@ class MultiPage:
         self.comp_home.bgimg = Image(os.path.join('..', 'controls', 'images', 'al2.jpg'))
         self.comp_home.visible = True
         lbl_wnd = Label(self.comp_home, text='Page 1 Google Search, also referred to as \n Google Web Search or simply Google,\n'
-                                   'is a web search engine developed by Google LLC. \n \n '
+                                            'web search engine developed by Google LLC. \n \n '
                                              'It is the most used search engine on the World Wide Web across all platforms, <br />'
                                              '\n \n with 92.74% market share as of October 2018,\n handling more than 3.5 billion searches each day.'
                                              , markup=False, multiline=True)
@@ -147,7 +147,7 @@ class MultiPage:
             # to true in the listener function that is called when the button is clicked (will only work if the window
             # was hidden before. Closing the window will destroy the widget and an error will be thrown when trying
             # to make it visible again.
-            wnd_dialog = Shell(parent=self._shell, titlebar=True, border=True, resize=False, modal=False,
+            wnd_dialog = Shell(parent=self._shell, titlebar=True, border=True, resize=False, modal=True,
                                halign='center', valign='center')
             wnd_dialog.create_content()
             wnd_dialog.content.bg = Color('white')
@@ -172,6 +172,8 @@ class MultiPage:
 
         def showdialog1(*_):
 
+            # Start Window1
+
             wnd_dialog1 = Shell(parent=self._shell, titlebar=True, border=True, resize=False,
                                halign='center', valign='center')
             wnd_dialog1.create_content()
@@ -179,23 +181,14 @@ class MultiPage:
 
             w = session.runtime.display.width.value
             h = session.runtime.display.height.value
-            wnd_dialog1.bounds = w / 2 - 100, h / 2 - 150, 300, 300
-
-            wnd_dialog2 = Shell(parent=self._shell, titlebar=True, border=True, resize=False,
-                                halign='top', valign='top')
-            wnd_dialog2.create_content()
-            wnd_dialog2.content.bg = Color('white')
-
-            w = session.runtime.display.width.value
-            h = session.runtime.display.height.value
-            wnd_dialog2.bounds = w / 2 - 200, h / 2 - 350, 200, 200
+            wnd_dialog1.bounds = w / 2 - 100, h / 3 - 150, 250, 250
 
             cmp_dialog1 = Composite(wnd_dialog1.content)
             cmp_dialog1.layout = RowLayout(valign='fill', halign='fill', flexrows=0)
 
             lbl_wnd1 = Label(cmp_dialog1, text='Blafasel <b> This is really important</b>', markup=True,
-                            valign='fill', halign='fill')
-            lbl_wnd1.bg = Color('blue')
+                             valign='fill', halign='fill')
+            lbl_wnd1.bg = Color('black')
 
             def dosomething1(*_):
                 lbl_wnd1.text = '<b>I did something!</b>'
@@ -204,7 +197,41 @@ class MultiPage:
             btn_dosomething1.on_select += dosomething1
 
             wnd_dialog1.show()
+
+            # End window1
+
+            # Start Window2
+
+            wnd_dialog2 = Shell(parent=self._shell, titlebar=True, border=True, resize=False,
+                                halign='top', valign='top')
+            wnd_dialog2.create_content()
+            wnd_dialog2.content.bg = Color('blue')
+
+            w = session.runtime.display.width.value
+            h = session.runtime.display.height.value
+            wnd_dialog2.bounds = w / 2 - 200, h / 1 - 350, 250, 250
+
+            cmp_dialog2 = Composite(wnd_dialog2.content)
+            cmp_dialog2.layout = RowLayout(valign='fill', halign='fill', flexrows=0)
+
+            lbl_wnd2 = Label(cmp_dialog2, text='Blafasel \n Its my life</b>', markup=False,
+                            valign='fill', halign='fill')
+            lbl_wnd2.bg = Color('blue')
+            lbl_wnd2.bgimg = Image(os.path.join('..', 'controls', 'images', 'al1.jpg'))
+
             wnd_dialog2.show()
+
+            # End window1
+
+            def dosomething1(*_):
+                lbl_wnd1.text = '<b>I did something!</b>'
+
+            btn_dosomething1 = Button(cmp_dialog1, text='Do something', valign='fill', halign='fill')
+            btn_dosomething1.on_select += dosomething1
+
+            wnd_dialog1.show()
+
+
 
 
 
@@ -213,6 +240,7 @@ class MultiPage:
         btn_switch1.on_select += back_menu
         btn_showdialog.on_select += showdialog
         btn_showdialog1.on_select += showdialog1
+        btn_showdialog11.on_select += showdialog1
 
         self._shell.show()
 
