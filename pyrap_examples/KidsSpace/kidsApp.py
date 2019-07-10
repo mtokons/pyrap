@@ -181,20 +181,19 @@ class MultiPage:
 
         comp_four_btn2 = Composite(comp_four_field)
         comp_four_btn2.layout = ColumnLayout(halign='fill', valign='fill', equalwidths=True)
-        btn_play1 = Button(comp_four_btn2, text='Play Video', halign='fill', valign='fill')
+
+        comp_four_btn3 = Composite(comp_four_btn2)
+        comp_four_btn3.layout = RowLayout (halign='fill', valign='fill', equalheights=True)
+
+        btn_play1 = Button(comp_four_btn3, text='Play Video', halign='fill', valign='fill')
+        btn_play2 = Button(comp_four_btn3, text='Play Video', halign='fill', valign='fill')
         #btn_pause1 = Button(comp_four_btn2, text='Pause', halign='fill', valign='fill')
 
         comp_body1 = Composite(comp_four_field)
         comp_body1.layout = RowLayout(halign='fill', valign='fill', flexrows=0)
 
-        v1 = Video(comp_body1, halign='fill', valign='fill')
-        v1.addsrc({'source': 'video/test.mp4', 'type': 'video/mp4'})
 
-        def play1(*_):
-            v1.play()
 
-        def pause1(*_):
-            v1.pause()
 
         def video_window(*_):
 
@@ -208,21 +207,30 @@ class MultiPage:
             wnd_dialog.bounds = w / 2 - 200, h / 2 - 150, 400, 300
 
             cmp_dialog = Composite(wnd_dialog.content)
-            cmp_dialog.layout = RowLayout(valign='fill', halign='fill', flexrows=0)
+            cmp_dialog.layout = RowLayout(valign='fill', halign='fill', flexrows=1)
 
             lbl_wnd = Label(cmp_dialog, text='Blafasel <b> This is a video/b>', markup=True, valign='fill', halign='fill')
             lbl_wnd.bg = Color('red')
+            v1 = Video (cmp_dialog, halign='fill', valign='fill')
+            v1.addsrc({'source': 'video/test.mp4', 'type': 'video/mp4'})
+
+            def play1(*_):
+                v1.play()
+
+            def pause1(*_):
+                v1.pause()
+
+            btn_play1 = Button(cmp_dialog, text='Play', halign='fill', valign='fill')
+            btn_pause1 = Button(cmp_dialog, text='Pause', halign='fill', valign='fill')
 
 
-
-            def dosomething(*_):
-                lbl_wnd.text = '<b>I did something!</b>'
+            #def dosomething(*_):
+                #lbl_wnd.text = '<b>I did something!</b>'
 
 
 
             #btn_dosomething = Button(cmp_dialog, text='Do something', valign='fill', halign='fill')
-            btn_play1 = Button(cmp_dialog, text='Play', halign='fill', valign='fill')
-            btn_pause1 = Button(cmp_dialog, text='Pause', halign='fill', valign='fill')
+
             #btn_dosomething.on_select += dosomething
 
             wnd_dialog.show()
