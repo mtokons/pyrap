@@ -6,6 +6,7 @@ import pyrap
 from pyrap.layout import ColumnLayout, RowLayout, StackLayout
 from pyrap.ptypes import Color, Pixels, Image
 from pyrap.pwt.audio.audio import Audio
+from pyrap.pwt.video.video import Video
 from pyrap.widgets import Shell, Label, Composite, Button
 
 
@@ -21,7 +22,7 @@ class MultiPage:
         self._shell.on_resize += self._shell.dolayout
 
         comp_mainframe = Composite(self._shell.content)
-        comp_mainframe.layout = RowLayout(halign='fill', valign='fill', flexrows=1, vspace=0)
+        comp_mainframe.layout = RowLayout(halign='fill', valign='fill', flexrows=0, vspace=0)
 
         # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
         # HEADER - we may not need this.. or maybe we do. You decide.
@@ -50,10 +51,11 @@ class MultiPage:
         self.comp_home.layout = RowLayout(flexrows=0, halign='fill', valign='fill')
         #self.comp_home.bg = Color('blue')
         self.comp_home.bgimg = Image(os.path.join('images', 'al_2.jpg'))
+        self.comp_home.bgsize = 'cover'
         self.comp_home.visible = True
-        btn_showdialog = Button(self.comp_home, text='Show Dialog')
-        btn_showdialog = Button(self.comp_home, text='Show Dialog')
-        btn_showdialog = Button(self.comp_home, text='Show Dialog')
+        btn_showdialog = Button(self.comp_home, text='Show Dialog1')
+        btn_showdialog = Button(self.comp_home, text='Show Dialog2')
+        btn_showdialog = Button(self.comp_home, text='Show Dialog3')
 
         lbl_wnd = Label(self.comp_home, text='Page 1 Google Search, also referred to as \n Google Web Search or simply Google,\n'
                                             'web search engine developed by Google LLC. \n \n '
@@ -63,8 +65,8 @@ class MultiPage:
         lbl_wnd.font = lbl_wnd.font.modify(size=16)
         lbl_wnd.color = Color("#00ff00")
 
-        btn_showdialog = Button(self.comp_home, text='Show Dialog')
-        btn_showdialog = Button(self.comp_home, text='Show Dialog')
+        btn_showdialog = Button(self.comp_home, text='Show Dialog4')
+        btn_showdialog = Button(self.comp_home, text='Show Dialog5')
 
         #lbl_wnd = Label(cmp_dialog, text='Blafasel <b> This is really important</b>', markup=True, valign='fill', halign='fill')
         #lbl_wnd.bg = Color('red')
@@ -75,8 +77,9 @@ class MultiPage:
 
         comp_home_s1.bg = Color('blue')
         comp_home_s1.bgimg = Image(os.path.join('..', 'KidsSpace', 'images', 'al_m_1.jpg'))
+        comp_home_s1.bgsize = 'cover'
         comp_home_s1.visible = True
-        btn_showdialog11 = Button(comp_home_s1, text='Show Dialog', halign='fill', valign='fill')
+        btn_showdialog11 = Button(comp_home_s1, text='Show Dialog6', halign='fill', valign='fill')
 
 
 
@@ -87,7 +90,8 @@ class MultiPage:
         self.comp_second.layout = RowLayout(flexrows=0, halign='fill', valign='fill')
         self.comp_second.bg = Color('green')
         self.comp_second.visible = True
-        self.comp_second.bgimg = Image(os.path.join('images', 'al_6.jpg'))
+        self.comp_second.bgimg = Image(os.path.join('images', 'al_8.jpg'))
+        self.comp_second.bgsize = 'cover'
         xxx = Label(self.comp_second, text='<b>Page 2</b>', markup=True)
 
         btn_showdialog = Button(self.comp_second, text='Show Dialog1', halign='fill', maxwidth=100)
@@ -101,6 +105,7 @@ class MultiPage:
         self.comp_third.layout = RowLayout(flexrows=0, halign='fill', valign='fill')
         self.comp_third.bg = Color('yellow')
         self.comp_third.bgimg = Image(os.path.join('images', 'al_3.jpg'))
+        #self.comp_third.bgsize = 'cover'
         self.comp_third.visible = True
         #Label(self.comp_third, text='<b>Page 3</b>', markup=True)
 
@@ -121,7 +126,7 @@ class MultiPage:
         Label(comp_third_field1, img=Image(os.path.join('images', 'al_m_1.jpg')))
         comp_third_field1.visible = True
         comp_third_field1.bgimg = Image(os.path.join('images', 'al_3.jpg'))
-        comp_third_field1.bgsize = 'cover'
+        #comp_third_field1.bgsize = 'cover'
 
         # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -131,18 +136,21 @@ class MultiPage:
         self.comp_four.layout = RowLayout(flexrows=0, halign='fill', valign='fill')
         self.comp_four.bg = Color('yellow')
         self.comp_four.bgimg = Image(os.path.join('images', 'al_1.jpg'))
+        self.comp_four.bgsize = 'cover'
         self.comp_four.visible = True
         # Label(self.comp_third, text='<b>Page 3</b>', markup=True)
 
         comp_four_field = Composite(self.comp_four)
-        comp_four_field.layout = RowLayout(flexrows=1, halign='fill', valign='fill')
+        comp_four_field.layout = ColumnLayout(flexcols=1, halign='fill', valign='fill')
         # comp_third_field.bgimg = Image(os.path.join('images', 'al_3.jpg'))
         # comp_third_field.bgsize = 'cover'
 
+        #Audio
+
         comp_four_btn = Composite(comp_four_field)
         comp_four_btn.layout = ColumnLayout(halign='fill', valign='fill', equalwidths=True)
-        btn_play = Button(comp_four_btn, text='Play', halign='fill', valign='fill')
-        btn_pause = Button(comp_four_btn, text='Pause', halign='fill', valign='fill')
+        btn_play = Button(comp_four_btn, text='Play Audio', halign='fill', valign='fill')
+        btn_pause = Button(comp_four_btn, text='Pause Audio', halign='fill', valign='fill')
         #btn_download = Button(comp_four_btn, text='Download', halign='fill', valign='fill')
 
         v = Audio(self.comp_four, halign='fill', valign='fill')
@@ -158,59 +166,73 @@ class MultiPage:
         btn_play.on_select += play
         btn_pause.on_select += pause
 
+        #Audio End
+
         comp_four_field1 = Composite(comp_four_field)
         comp_four_field1.layout = RowLayout(flexrows=0, halign='fill', valign='fill')
-        Label(comp_four_field1, img=Image(os.path.join('images', 'al_s_1.jpg')))
-        Label(comp_four_field1, img=Image(os.path.join('images', 'al_m_1.jpg')))
+        #Label(comp_four_field1, img=Image(os.path.join('images', 'al_s_1.jpg')))
+        #Label(comp_four_field1, img=Image(os.path.join('images', 'al_m_1.jpg')))
         comp_four_field1.visible = True
         comp_four_field1.bgimg = Image(os.path.join('images', 'al_1.jpg'))
         comp_four_field1.bgsize = 'cover'
 
-        '''
-        self.comp_four = Composite(self.comp_body)
-        self.comp_four.layout = RowLayout(flexrows=0, halign='fill', valign='fill')
-        self.comp_four.bg = Color('yellow')
-        self.comp_four.visible = True
-        #self.comp_four.bgimg = Image(os.path.join('images', 'al_1.jpg'))
-        #self.comp_four.bgsize = 'cover'
 
-        #comp_four_body = Composite(self.comp_four)
-        #comp_four_body.layout = RowLayout(halign='fill', valign='fill', flexrows=0)
+        #Video
 
+        comp_four_btn2 = Composite(comp_four_field)
+        comp_four_btn2.layout = ColumnLayout(halign='fill', valign='fill', equalwidths=True)
+        btn_play1 = Button(comp_four_btn2, text='Play Video', halign='fill', valign='fill')
+        #btn_pause1 = Button(comp_four_btn2, text='Pause', halign='fill', valign='fill')
 
-        comp_four_btn = Composite(self.comp_four)
-        comp_four_btn.layout = ColumnLayout(halign='fill', valign='fill', equalwidths=True)
-        btn_play = Button(comp_btn, text='Play', halign='fill', valign='fill')
-        btn_pause = Button(comp_btn, text='Pause', halign='fill', valign='fill')
+        comp_body1 = Composite(comp_four_field)
+        comp_body1.layout = RowLayout(halign='fill', valign='fill', flexrows=0)
 
-        v = Audio(self.comp_four, halign='fill', valign='fill')
-        v.addsrc({'source': 'Audio/test.mp3', 'type': 'audio/mpeg'})
+        v1 = Video(comp_body1, halign='fill', valign='fill')
+        v1.addsrc({'source': 'video/test.mp4', 'type': 'video/mp4'})
 
-        def play(*_):
-            v.play()
+        def play1(*_):
+            v1.play()
 
-        def pause(*_):
-            v.pause()
+        def pause1(*_):
+            v1.pause()
 
-        btn_play.on_select += play
-        btn_pause.on_select += pause
+        def video_window(*_):
 
-        #comp_four_text = Composite(comp_four_body)
-        #comp_four_text.layout = RowLayout(halign='fill', valign='fill', flexrows=0)
-        #Label(self.comp_four, text='<b>Page 44</b>', markup=True)
+            wnd_dialog = Shell(parent=self._shell, titlebar=True, border=True, resize=False, modal=True,
+                               halign='center', valign='center')
+            wnd_dialog.create_content()
+            wnd_dialog.content.bg = Color('white')
 
-        #btn_showdialog4 = Button(self.comp_four, text='Show Dialog', halign='fill', valign='fill')
+            w = session.runtime.display.width.value
+            h = session.runtime.display.height.value
+            wnd_dialog.bounds = w / 2 - 200, h / 2 - 150, 400, 300
 
+            cmp_dialog = Composite(wnd_dialog.content)
+            cmp_dialog.layout = RowLayout(valign='fill', halign='fill', flexrows=0)
 
-'''
-
+            lbl_wnd = Label(cmp_dialog, text='Blafasel <b> This is a video/b>', markup=True, valign='fill', halign='fill')
+            lbl_wnd.bg = Color('red')
 
 
-        #lblbuttn = Label(self.comp_third, img=Image(os.path.join('..', 'KidsSpace', 'images', 'al_5.jpg')), markup=True)
-        #lblbuttn.bg = 'transp'
-        #lblbuttn1 = Label(self.comp_third, img=Image(os.path.join('..', 'KidsSpace', 'images', 'al_1.jpg')), markup=True)
-        #lblbuttn1.bg = 'transp'
 
+            def dosomething(*_):
+                lbl_wnd.text = '<b>I did something!</b>'
+
+
+
+            #btn_dosomething = Button(cmp_dialog, text='Do something', valign='fill', halign='fill')
+            btn_play1 = Button(cmp_dialog, text='Play', halign='fill', valign='fill')
+            btn_pause1 = Button(cmp_dialog, text='Pause', halign='fill', valign='fill')
+            #btn_dosomething.on_select += dosomething
+
+            wnd_dialog.show()
+
+            btn_play1.on_select += play1
+            btn_pause1.on_select += pause1
+
+        btn_play1.on_select += video_window
+
+    # video end
 
 
 
@@ -356,6 +378,7 @@ class MultiPage:
         btn_showdialog1.on_select += showdialog1
         btn_showdialog11.on_select += showdialog1
         xxx.on_mouseup += showdialog1
+
 
         self._shell.show()
 
