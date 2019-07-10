@@ -5,6 +5,7 @@ from pyrap import session
 import pyrap
 from pyrap.layout import ColumnLayout, RowLayout, StackLayout
 from pyrap.ptypes import Color, Pixels, Image
+from pyrap.pwt.audio.audio import Audio
 from pyrap.widgets import Shell, Label, Composite, Button
 
 
@@ -50,6 +51,10 @@ class MultiPage:
         #self.comp_home.bg = Color('blue')
         self.comp_home.bgimg = Image(os.path.join('images', 'al_2.jpg'))
         self.comp_home.visible = True
+        btn_showdialog = Button(self.comp_home, text='Show Dialog')
+        btn_showdialog = Button(self.comp_home, text='Show Dialog')
+        btn_showdialog = Button(self.comp_home, text='Show Dialog')
+
         lbl_wnd = Label(self.comp_home, text='Page 1 Google Search, also referred to as \n Google Web Search or simply Google,\n'
                                             'web search engine developed by Google LLC. \n \n '
                                              'It is the most used search engine on the World Wide Web across all platforms, <br />'
@@ -58,9 +63,12 @@ class MultiPage:
         lbl_wnd.font = lbl_wnd.font.modify(size=16)
         lbl_wnd.color = Color("#00ff00")
 
+        btn_showdialog = Button(self.comp_home, text='Show Dialog')
+        btn_showdialog = Button(self.comp_home, text='Show Dialog')
+
         #lbl_wnd = Label(cmp_dialog, text='Blafasel <b> This is really important</b>', markup=True, valign='fill', halign='fill')
         #lbl_wnd.bg = Color('red')
-        btn_showdialog = Button(self.comp_home, text='Show Dialog', halign='fill', valign='fill')
+
 
         comp_home_s1 = Composite(self.comp_home)
         comp_home_s1.layout = RowLayout(flexrows=0, halign='fill', valign='fill')
@@ -81,6 +89,9 @@ class MultiPage:
         self.comp_second.visible = True
         self.comp_second.bgimg = Image(os.path.join('images', 'al_6.jpg'))
         xxx = Label(self.comp_second, text='<b>Page 2</b>', markup=True)
+
+        btn_showdialog = Button(self.comp_second, text='Show Dialog1', halign='fill', maxwidth=100)
+        btn_showdialog = Button(self.comp_second, text='Show Dialog')
         btn_showdialog1 = Button(self.comp_second, text='Show Dialog', halign='fill', valign='fill')
 
         # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -95,7 +106,8 @@ class MultiPage:
 
         comp_third_field = Composite(self.comp_third)
         comp_third_field.layout = RowLayout(flexrows=1, halign='fill', valign='fill')
-        comp_third_field.bgimg = Image(os.path.join('images', 'al_3.jpg'))
+        #comp_third_field.bgimg = Image(os.path.join('images', 'al_3.jpg'))
+        #comp_third_field.bgsize = 'cover'
 
         comp_btn = Composite(comp_third_field)
         comp_btn.layout = ColumnLayout(halign='fill', valign='fill', equalwidths=True)
@@ -109,20 +121,88 @@ class MultiPage:
         Label(comp_third_field1, img=Image(os.path.join('images', 'al_m_1.jpg')))
         comp_third_field1.visible = True
         comp_third_field1.bgimg = Image(os.path.join('images', 'al_3.jpg'))
+        comp_third_field1.bgsize = 'cover'
 
         # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         # 4th PAGE #
+
+        self.comp_four = Composite(self.comp_body)
+        self.comp_four.layout = RowLayout(flexrows=0, halign='fill', valign='fill')
+        self.comp_four.bg = Color('yellow')
+        self.comp_four.bgimg = Image(os.path.join('images', 'al_1.jpg'))
+        self.comp_four.visible = True
+        # Label(self.comp_third, text='<b>Page 3</b>', markup=True)
+
+        comp_four_field = Composite(self.comp_four)
+        comp_four_field.layout = RowLayout(flexrows=1, halign='fill', valign='fill')
+        # comp_third_field.bgimg = Image(os.path.join('images', 'al_3.jpg'))
+        # comp_third_field.bgsize = 'cover'
+
+        comp_four_btn = Composite(comp_four_field)
+        comp_four_btn.layout = ColumnLayout(halign='fill', valign='fill', equalwidths=True)
+        btn_play = Button(comp_four_btn, text='Play', halign='fill', valign='fill')
+        btn_pause = Button(comp_four_btn, text='Pause', halign='fill', valign='fill')
+        #btn_download = Button(comp_four_btn, text='Download', halign='fill', valign='fill')
+
+        v = Audio(self.comp_four, halign='fill', valign='fill')
+        v.addsrc({'source': 'Audio/test.mp3', 'type': 'audio/mpeg'})
+
+        def play(*_):
+            v.play()
+
+        def pause(*_):
+            v.pause()
+
+
+        btn_play.on_select += play
+        btn_pause.on_select += pause
+
+        comp_four_field1 = Composite(comp_four_field)
+        comp_four_field1.layout = RowLayout(flexrows=0, halign='fill', valign='fill')
+        Label(comp_four_field1, img=Image(os.path.join('images', 'al_s_1.jpg')))
+        Label(comp_four_field1, img=Image(os.path.join('images', 'al_m_1.jpg')))
+        comp_four_field1.visible = True
+        comp_four_field1.bgimg = Image(os.path.join('images', 'al_1.jpg'))
+        comp_four_field1.bgsize = 'cover'
+
+        '''
         self.comp_four = Composite(self.comp_body)
         self.comp_four.layout = RowLayout(flexrows=0, halign='fill', valign='fill')
         self.comp_four.bg = Color('yellow')
         self.comp_four.visible = True
-        Label(self.comp_four, text='<b>Page 44</b>', markup=True)
-        self.comp_four.bgimg = Image(os.path.join('images', 'al_1.jpg'))
-        btn_showdialog4 = Button(self.comp_four, text='Show Dialog', halign='fill', valign='fill')
+        #self.comp_four.bgimg = Image(os.path.join('images', 'al_1.jpg'))
+        #self.comp_four.bgsize = 'cover'
+
+        #comp_four_body = Composite(self.comp_four)
+        #comp_four_body.layout = RowLayout(halign='fill', valign='fill', flexrows=0)
 
 
+        comp_four_btn = Composite(self.comp_four)
+        comp_four_btn.layout = ColumnLayout(halign='fill', valign='fill', equalwidths=True)
+        btn_play = Button(comp_btn, text='Play', halign='fill', valign='fill')
+        btn_pause = Button(comp_btn, text='Pause', halign='fill', valign='fill')
 
+        v = Audio(self.comp_four, halign='fill', valign='fill')
+        v.addsrc({'source': 'Audio/test.mp3', 'type': 'audio/mpeg'})
+
+        def play(*_):
+            v.play()
+
+        def pause(*_):
+            v.pause()
+
+        btn_play.on_select += play
+        btn_pause.on_select += pause
+
+        #comp_four_text = Composite(comp_four_body)
+        #comp_four_text.layout = RowLayout(halign='fill', valign='fill', flexrows=0)
+        #Label(self.comp_four, text='<b>Page 44</b>', markup=True)
+
+        #btn_showdialog4 = Button(self.comp_four, text='Show Dialog', halign='fill', valign='fill')
+
+
+'''
 
 
 
@@ -142,40 +222,38 @@ class MultiPage:
             self.comp_home.bgimg = self.comp_home.bgimg.resize(width= Pixels(w), height=Pixels(h))
             self.comp_second.bgimg = self.comp_second.bgimg.resize(width=Pixels(w), height=Pixels(h))
             self.comp_third.bgimg = self.comp_third.bgimg.resize(width=Pixels(w), height=Pixels(h))
-            #self.comp_four.bgimg = self.comp_four.bgimg.resize(width=Pixels(w), height=Pixels(h))
+            self.comp_four.bgimg = self.comp_four.bgimg.resize(width=Pixels(w), height=Pixels(h))
             print(w,h)
             self._shell.dolayout()
 
 
         # LISTENER FUNCTION TO SWITCH PAGE VISIBILITY
         def open_menu(*_):
-            self.visible = (
-                                       self.visible + 1) % 4  # if you don't understand this, learn about the modulo operator (Euclidean division)
+            self.visible = (self.visible + 1) % 4  # if you don't understand this, learn about the modulo operator (Euclidean division)
 
-            # switch the three pages all around
+            # switch the Four pages all around
             self.comp_home.visible = self.visible == 0
             self.comp_home.layer = (0 - self.visible) % 4
             self.comp_second.visible = self.visible == 1
             self.comp_second.layer = (1 - self.visible) % 4
             self.comp_third.visible = self.visible == 2
             self.comp_third.layer = (2 - self.visible) % 4
-            #self.comp_four.visible = self.visible == 3
-            #self.comp_four.layer = (3 - self.visible) % 4
+            self.comp_four.visible = self.visible == 3
+            self.comp_four.layer = (3 - self.visible) % 4
 
         # LISTENER FUNCTION TO SWITCH PAGE VISIBILITY
         def back_menu(*_):
-            self.visible = (
-                                       self.visible - 1) % 4  # if you don't understand this, learn about the modulo operator (Euclidean division)
+            self.visible = (self.visible - 1) % 4  # if you don't understand this, learn about the modulo operator (Euclidean division)
 
-            # switch the three pages all around
+            # switch the Four pages all around
             self.comp_home.visible = self.visible == 0
             self.comp_home.layer = (0 - self.visible) % 4
             self.comp_second.visible = self.visible == 1
             self.comp_second.layer = (1 - self.visible) % 4
             self.comp_third.visible = self.visible == 2
             self.comp_third.layer = (2 - self.visible) % 4
-            #self.comp_four.visible = self.visible == 3
-            #self.comp_four.layer = (3 - self.visible) % 4
+            self.comp_four.visible = self.visible == 3
+            self.comp_four.layer = (3 - self.visible) % 4
 
         def showdialog(*_):
             # this will create a new dialog every time the button is clicked. You can also create it when setting
