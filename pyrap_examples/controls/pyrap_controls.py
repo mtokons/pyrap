@@ -815,6 +815,7 @@ class ControlsDemo():
         browser = Button(grp, text='Open Browser', halign='center')
         browser.on_select += self.open_browser
 
+
     def create_radar_page(self, parent):
         grp = Group(parent, text='Radar Chart')
         grp.layout = RowLayout(halign='fill', valign='fill', flexrows=1)

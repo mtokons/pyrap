@@ -180,7 +180,8 @@ class Widget(object):
             else:
                 self._menu.unhide()
                 session.runtime.push.set()
-        elif op.event == 'MouseDoubleClick': self.on_dblclick.notify(_rwt_mouse_event(op))
+        elif op.event == 'MouseDoubleClick':
+            self.on_dblclick.notify(_rwt_mouse_event(op))
         elif op.event == 'Navigation': self.on_navigate.notify(_rwt_mouse_event(op))
         else: return False
         return True 

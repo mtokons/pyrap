@@ -187,14 +187,9 @@ class MultiPage:
         comp_body1 = Composite(comp_four_field)
         comp_body1.layout = RowLayout(halign='fill', valign='fill', flexrows=0)
 
-        v1 = Video(comp_body1, halign='fill', valign='fill')
-        v1.addsrc({'source': 'video/test.mp4', 'type': 'video/mp4'})
 
-        def play1(*_):
-            v1.play()
 
-        def pause1(*_):
-            v1.pause()
+
 
         def video_window(*_):
 
@@ -210,14 +205,14 @@ class MultiPage:
             cmp_dialog = Composite(wnd_dialog.content)
             cmp_dialog.layout = RowLayout(valign='fill', halign='fill', flexrows=0)
 
-            lbl_wnd = Label(cmp_dialog, text='Blafasel <b> This is a video/b>', markup=True, valign='fill', halign='fill')
-            lbl_wnd.bg = Color('red')
+            v1 = Video(cmp_dialog, halign='fill', valign='fill')
+            v1.addsrc({'source': 'video/test.mp4', 'type': 'video/mp4'})
 
+            def play1(*_):
+                v1.play()
 
-
-            def dosomething(*_):
-                lbl_wnd.text = '<b>I did something!</b>'
-
+            def pause1(*_):
+                v1.pause()
 
 
             #btn_dosomething = Button(cmp_dialog, text='Do something', valign='fill', halign='fill')
@@ -226,6 +221,7 @@ class MultiPage:
             #btn_dosomething.on_select += dosomething
 
             wnd_dialog.show()
+
 
             btn_play1.on_select += play1
             btn_pause1.on_select += pause1
