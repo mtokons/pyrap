@@ -194,6 +194,13 @@ class MultiPage:
 
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> b241de47e7b3afc9aff29d66ef27dec5d133b5df
+>>>>>>> origin/master
 
         def video_window(*_):
 
@@ -209,9 +216,19 @@ class MultiPage:
             cmp_dialog = Composite(wnd_dialog.content)
             cmp_dialog.layout = RowLayout(valign='fill', halign='fill', flexrows=1)
 
+<<<<<<< HEAD
             lbl_wnd = Label(cmp_dialog, text='Blafasel <b> This is a video/b>', markup=True, valign='fill', halign='fill')
             lbl_wnd.bg = Color('red')
             v1 = Video (cmp_dialog, halign='fill', valign='fill')
+=======
+<<<<<<< HEAD
+            v1 = Video(cmp_dialog, halign='fill', valign='fill')
+=======
+            lbl_wnd = Label(cmp_dialog, text='Blafasel <b> This is a video/b>', markup=True, valign='fill', halign='fill')
+            lbl_wnd.bg = Color('red')
+            v1 = Video (cmp_dialog, halign='fill', valign='fill')
+>>>>>>> b241de47e7b3afc9aff29d66ef27dec5d133b5df
+>>>>>>> origin/master
             v1.addsrc({'source': 'video/test.mp4', 'type': 'video/mp4'})
 
             def play1(*_):
@@ -219,6 +236,11 @@ class MultiPage:
 
             def pause1(*_):
                 v1.pause()
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
 
             btn_play1 = Button(cmp_dialog, text='Play', halign='fill', valign='fill')
             btn_pause1 = Button(cmp_dialog, text='Pause', halign='fill', valign='fill')
@@ -227,6 +249,10 @@ class MultiPage:
             #def dosomething(*_):
                 #lbl_wnd.text = '<b>I did something!</b>'
 
+<<<<<<< HEAD
+=======
+>>>>>>> b241de47e7b3afc9aff29d66ef27dec5d133b5df
+>>>>>>> origin/master
 
 
             #btn_dosomething = Button(cmp_dialog, text='Do something', valign='fill', halign='fill')
@@ -235,6 +261,10 @@ class MultiPage:
 
             wnd_dialog.show()
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
             btn_play1.on_select += play1
             btn_pause1.on_select += pause1
 

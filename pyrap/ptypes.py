@@ -914,8 +914,13 @@ class SVG(object):
         self.tree = ET.parse(fpath)
         self.root = self.tree.getroot()
         w, h = self.root.attrib['viewBox'].split()[-2:]
+<<<<<<< HEAD
         self._width = int(w)
         self._height = int(h)
+=======
+        self._width = float(w)
+        self._height = float(h)
+>>>>>>> origin/master
         stream = BytesIO()
         self.save(stream)
         self._content = str(stream.getvalue())

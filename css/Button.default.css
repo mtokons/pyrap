@@ -14,7 +14,11 @@
 
 Button,
 FileUpload {
+<<<<<<< HEAD
   font: 14px Arial, sans-serif;
+=======
+  font: 16px Arial, sans-serif;
+>>>>>>> origin/master
   background-image: none;
   background-repeat: repeat;
   background-position: left top;
