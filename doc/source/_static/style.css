@@ -1,0 +1,22 @@
+blockquote {
+    font-size: 14px;
+}
+
+div.leftside {
+    width: 300px;
+    padding: 0px 3px 0px 0px;
+    float: left;
+}
+
+div.left {
+    float: left;
+    width: 50%;
+}
+
+/*div.right {
+    width: 50%
+ }*/
+
+div.rightside {
+    margin-left: 0;
+}
